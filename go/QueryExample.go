@@ -7,9 +7,15 @@ import (
 )
 
 func main() {
-	client := influxdb2.NewClient("https://us-west-2-1.aws.cloud2.influxdata.com", "my-token")
-	queryAPI := client.QueryAPI("my-org")
-	result, err := queryAPI.Query(context.Background(), `from(bucket:"my-bucket") |> range(start: -1d)`)
+	url := "https://us-west-2-1.aws.cloud2.influxdata.com"
+	token := "my-token"
+	org := "my-org"
+	bucket := "my-bucket"
+
+	client := influxdb2.NewClient(url, token)
+	queryAPI := client.QueryAPI(org)
+	query := fmt.Sprintf(`from(bucket: "%v") |> range(start: -1d)`, bucket)
+	result, err := queryAPI.Query(context.Background(), query)
 	if err != nil {
 		panic(err)
 	}

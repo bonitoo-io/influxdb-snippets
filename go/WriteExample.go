@@ -7,8 +7,13 @@ import (
 )
 
 func main() {
-	client := influxdb2.NewClient("https://us-west-2-1.aws.cloud2.influxdata.com", "my-token")
-	writeAPI := client.WriteAPIBlocking("my-org", "my-bucket")
+	url := "https://us-west-2-1.aws.cloud2.influxdata.com"
+	token := "my-token"
+	org := "my-org"
+	bucket := "my-bucket"
+
+	client := influxdb2.NewClient(url, token)
+	writeAPI := client.WriteAPIBlocking(org, bucket)
 	p := influxdb2.NewPointWithMeasurement("weatherstation").
 		AddTag("location", "San Francisco").
 		AddField("temperature", 25.7).
