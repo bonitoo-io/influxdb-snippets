@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "test": "node WriteExample.js && node QueryExample.js"
+  },
+  "dependencies": {
+    "@influxdata/influxdb-client": "^1.23.0"
+  }
+}

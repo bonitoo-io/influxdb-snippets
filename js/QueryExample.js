@@ -1,6 +1,7 @@
 const {InfluxDB, flux} = require('@influxdata/influxdb-client')
 
-const url = 'https://us-west-2-1.aws.cloud2.influxdata.com'
+// const url = "https://us-west-2-1.aws.cloud2.influxdata.com";
+const url = "http://localhost:9999";
 const token = 'my-token'
 const org = 'my-org'
 const bucket = 'my-bucket'
@@ -8,7 +9,9 @@ const bucket = 'my-bucket'
 const client = new InfluxDB({url: url, token: token})
 const queryApi = client.getQueryApi(org)
 
-const query = flux`from(bucket: "${bucket}") |> range(start: -1d)`
+const query = flux`from(bucket: "${bucket}") 
+  |> range(start: -1d)
+  |> filter(fn: (r) => r._measurement == "weatherstation")`
 queryApi.queryRows(query, {
     next(row, tableMeta) {
         const o = tableMeta.toObject(row)
