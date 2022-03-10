@@ -2,8 +2,9 @@ package main
 
 import (
 	"context"
-	"github.com/influxdata/influxdb-client-go/v2"
 	"time"
+
+	influxdb2 "github.com/influxdata/influxdb-client-go/v2"
 )
 
 func main() {
