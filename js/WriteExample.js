@@ -1,4 +1,4 @@
-const {InfluxDB} = require("@influxdata/influxdb-client");
+const {InfluxDB, Point} = require("@influxdata/influxdb-client");
 
 const url = 'https://us-west-2-1.aws.cloud2.influxdata.com'
 const token = "my-token";
@@ -6,8 +6,6 @@ const org = "my-org";
 const bucket = "my-bucket"
 
 const client = new InfluxDB({url: url, token: token});
-const {Point} = require("@influxdata/influxdb-client");
-
 const writeApi = client.getWriteApi(org, bucket);
 const point = new Point("weatherstation")
     .tag("location", "San Francisco")
