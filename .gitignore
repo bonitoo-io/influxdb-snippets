@@ -25,6 +25,5 @@ hs_err_pid*
 *.iml
 *.idea
 
-/go/go.sum
 php/vendor
 /php/composer.lock
