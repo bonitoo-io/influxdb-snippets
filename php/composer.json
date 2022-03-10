@@ -1,0 +1,10 @@
+{
+  "name": "example/influx",
+  "description": "example",
+  "keywords": [
+    "InfluxDB"
+  ],
+  "require": {
+    "influxdata/influxdb-client-php": "^2.6"
+  }
+}
