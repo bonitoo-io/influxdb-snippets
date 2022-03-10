@@ -14,7 +14,7 @@ public class WriteExample {
 		String bucket = "my-bucket";
 
 		try (InfluxDBClient influxDBClient = InfluxDBClientFactory.create(url, token, org, bucket);
-			 WriteApi writeApi = influxDBClient.makeWriteApi()) {
+			WriteApiBlocking writeApi = influxDBClient.getWriteApiBlocking();
 			Point point = Point.measurement("weatherstation")
 					.addTag("location", "San Francisco")
 					.addField("temperature", 25.5)
