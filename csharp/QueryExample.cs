@@ -11,11 +11,12 @@ namespace Examples
             var url = "https://us-west-2-1.aws.cloud2.influxdata.com";
             var token = "my-token";
             var org = "my-org";
+            var bucket = "my-bucket";
 
             using var client = InfluxDBClientFactory.Create(url, token);
 
             var queryApi = client.GetQueryApi();
-            var query = "from(bucket:\"my-bucket\") |> range(start: -1d)";
+            var query = $"from(bucket:\"{bucket}\") |> range(start: -1d)";
             var tables = await queryApi.QueryAsync(query, org);
             tables.ForEach(table =>
             {

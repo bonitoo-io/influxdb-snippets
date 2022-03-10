@@ -13,6 +13,7 @@ namespace Examples
             var url = "https://us-west-2-1.aws.cloud2.influxdata.com";
             var token = "my-token";
             var org = "my-org";
+            var bucket = "bucket";
 
             using var client = InfluxDBClientFactory.Create(url, token);
             var writeApi = client.GetWriteApiAsync();
@@ -22,7 +23,7 @@ namespace Examples
                 .Field("temperature", 25.5)
                 .Timestamp(DateTime.UtcNow, WritePrecision.Ns);
 
-             await writeApi.WritePointAsync(point, "my-bucket", org);
+             await writeApi.WritePointAsync(point, bucket, org);
         }
     }
 }
