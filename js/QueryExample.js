@@ -13,15 +13,15 @@ const query = flux`from(bucket: "${bucket}")
   |> range(start: -1d)
   |> filter(fn: (r) => r._measurement == "weatherstation")`
 queryApi.queryRows(query, {
-    next(row, tableMeta) {
+    next: (row, tableMeta) => {
         const o = tableMeta.toObject(row)
         console.log(`${o._time} ${o._measurement}: ${o._field}=${o._value}`)
     },
-    error(error) {
+    error: (error) => {
         console.error(error)
         console.log('Finished ERROR')
     },
-    complete() {
+    complete: () => {
         console.log('Finished SUCCESS')
     },
 })
