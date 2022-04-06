@@ -1,2 +1,2 @@
-# influxdb-spippets
+# influxdb-snippets
 InfluxDB Client Libraries snippets
